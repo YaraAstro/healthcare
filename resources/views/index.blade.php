@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Healthcare | Home </title>
+    <link rel="shortcut icon" href="{{asset('notes_medical_solid.ico')}}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +18,7 @@
     <main class="container text-center mt-5">
         <h1>Welcome to Our Website</h1>
         <p>This is the homepage. We are glad to have you here.</p>
-        <a href="./login.html" class="btn btn-success">Get Started</a>
+        <a href="/login" class="btn btn-success">Get Started</a>
     </main>
 
     <!-- footer -->

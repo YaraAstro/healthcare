@@ -1,0 +1,62 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background color */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container for the product */
+  .product {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto; /* Center the product container */
+    padding: 20px;
+    background-color: #ffffff; /* White background for the product container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Product heading */
+  .product h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333333; /* Darker text color */
+  }
+  
+  /* Product price styling */
+  .product p {
+    font-size: 20px;
+    color: #007bff; /* Blue color for price */
+    margin: 10px 0;
+  }
+  
+  /* Button styling */
+  .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #28a745; /* Green color for button */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #218838; /* Darker green for button on hover */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .product {
+      width: 90%; /* Increase width on smaller screens */
+      padding: 15px;
+    }
+  
+    .btn {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+  }
+  
