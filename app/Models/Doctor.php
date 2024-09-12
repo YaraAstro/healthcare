@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
+    
+    protected $table = 'doctor';
+
+    protected $fillable = ['id', 'username', 'email', 'password', 'name', 'speciality'];
+
 }

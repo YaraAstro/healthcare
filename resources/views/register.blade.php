@@ -17,23 +17,26 @@
     <main>
         <h1>Register</h1>
 
-        <!-- Role Selection -->
-        <div class="radio-container">
-            <label class="radio-label">
-                <input type="radio" name="role" value="doctor" checked>
-                Doctor
-                <span class="radio-mark"></span>
-            </label>
-            <label class="radio-label">
-                <input type="radio" name="role" value="patient">
-                Patient
-                <span class="radio-mark"></span>
-            </label>
-        </div>
-
         <!-- Registration Form -->
         <form action="{{ route('register') }}" method="POST">
             @csrf
+        
+            <!-- Role Selection -->
+            <div class="radio-container">
+                <label class="radio-label">
+                    <input type="radio" name="role" value="doctor">
+                    Doctor
+                    <span class="radio-mark"></span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="role" value="patient" checked>
+                    Patient
+                    <span class="radio-mark"></span>
+                </label>
+            </div>
+        
+            <input type="hidden" id="selected_role" name="role" value="patient">
+        
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             
@@ -45,7 +48,32 @@
             
             <input type="submit" value="Register">
         </form>
+        
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
     </main>
+
+    <script>
+        document.querySelectorAll('input[name="role"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.getElementById('selected_role').value = this.value;
+            });
+        });
+    </script>    
 
 </body>
 </html>
