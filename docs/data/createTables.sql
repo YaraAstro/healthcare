@@ -50,20 +50,22 @@ CREATE TABLE appointment (
 CREATE TABLE payment (
     id VARCHAR(5) PRIMARY KEY CHECK (id LIKE 'PY%'),
     patient_id VARCHAR(5),
+    appo_id VARCHAR(5),
     name_on_card VARCHAR(100),
     cc_number VARCHAR(20),
     amount VARCHAR(10),
     status ENUM('pending', 'success', 'declined'),
 
-    FOREIGN KEY (patient_id) REFERENCES patient(id)
+    FOREIGN KEY (patient_id) REFERENCES patient(id),
+    FOREIGN KEY (appo_id) REFERENCES appointment(id)
 );
 
 -- Create prescription table
 CREATE TABLE prescription (
     id VARCHAR(5) PRIMARY KEY CHECK (id LIKE 'PR%'),
-    patient_id VARCHAR(5),
-    doctor_id VARCHAR(5),
-    appo_id VARCHAR(5),
+    patient_id VARCHAR(5) NOT NULL,
+    doctor_id VARCHAR(5) NOT NULL,
+    appo_id VARCHAR(5) NOT NULL,
     payment_id VARCHAR(5),
     drugs TEXT,  -- drug column value be like -> [MDXXX, MDXXX, ....] array of drug ids
     amount VARCHAR(10),
