@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Healthcare | Examine </title>
-    <link rel="shortcut icon" href="{{asset('notes_medical_solid.ico')}}" type="image/x-icon">
+    <title>Healthcare | Examine</title>
+    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
 
     <!-- Styles -->
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
@@ -15,9 +15,11 @@
 <body>
 
     <div class="container">
+        <!-- Patient Information Section -->
         <section class="patient-info">
             <h2>Patient's Information Form</h2>
-            <form>
+            <form action="{{ route('examine.store') }}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="patient-name">Patient Name:</label>
                     <input type="text" id="patient-name" name="patient_name" required>
@@ -45,6 +47,7 @@
             </form>
         </section>
 
+        <!-- Drag Section -->
         <section class="drag-section">
             <div class="search-bar">
                 <label for="search">Search</label>
@@ -52,33 +55,15 @@
                 <button type="button">🔍</button>
             </div>
 
-            <div class="drag-item">
-                <label for="drag1">Drag 1:</label>
-                <input type="text" id="drag1" name="drag1">
-                <button type="button">❌</button>
-                <button type="button">✔️</button>
-            </div>
-
-            <div class="drag-item">
-                <label for="drag2">Drag 2:</label>
-                <input type="text" id="drag2" name="drag2">
-                <button type="button">❌</button>
-                <button type="button">✔️</button>
-            </div>
-
-            <div class="drag-item">
-                <label for="drag3">Drag 3:</label>
-                <input type="text" id="drag3" name="drag3">
-                <button type="button">❌</button>
-                <button type="button">✔️</button>
-            </div>
-
-            <div class="drag-item">
-                <label for="drag4">Drag 4:</label>
-                <input type="text" id="drag4" name="drag4">
-                <button type="button">❌</button>
-                <button type="button">✔️</button>
-            </div>
+            <!-- Drag Items -->
+            @foreach(range(1, 4) as $dragItem)
+                <div class="drag-item">
+                    <label for="drag{{ $dragItem }}">Drag {{ $dragItem }}:</label>
+                    <input type="text" id="drag{{ $dragItem }}" name="drag{{ $dragItem }}">
+                    <button type="button">❌</button>
+                    <button type="button">✔️</button>
+                </div>
+            @endforeach
 
             <div class="form-actions">
                 <button type="button">Add</button>

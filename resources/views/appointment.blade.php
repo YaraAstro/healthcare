@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Healthcare | Appointment </title>
-    <link rel="shortcut icon" href="{{asset('notes_medical_solid.ico')}}" type="image/x-icon">
+    <title>Healthcare | Appointment</title>
+    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +16,9 @@
 
     <div class="container">
         <h1>Appointment Form</h1>
-        <form class="appointment-form">
+        <form action="{{ route('appointment.store') }}" method="POST" class="appointment-form">
+            @csrf
+            <!-- Doctor Information -->
             <div class="form-section">
                 <h2>Doctor Information</h2>
                 <div class="form-group">
@@ -39,10 +41,10 @@
                     <input type="email" id="doctor-email" name="doctor_email" required>
                 </div>
 
-                <!-- Update: Redirect to doctorcheckup.html on submit -->
-                <button type="submit" class="submit-btn" onclick="window.location.href='doctorcheckup.html'; return false;">Submit</button>
+                <button type="submit" class="submit-btn">Submit</button>
             </div>
 
+            <!-- Patient Information -->
             <div class="form-section">
                 <h2>Patient Information</h2>
                 <div class="form-group">

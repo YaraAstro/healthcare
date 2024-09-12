@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Healthcare | Prescription </title>
-    <link rel="shortcut icon" href="{{asset('notes_medical_solid.ico')}}" type="image/x-icon">
+    <title>Healthcare | Prescription</title>
+    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
 
     <!-- Styles -->
+    {{-- Include Bootstrap if necessary --}}
     {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('css/prescriptionStyles.css') }}">
 
@@ -19,22 +20,25 @@
         <div class="prescription-form">
             <h2>Prescription Form</h2>
             <h3>Prescription Details</h3>
-            <form action="paymentgat.html">
+
+            {{-- Assuming the form is meant to post data to a route for processing --}}
+            <form action="{{ route('prescription.submit') }}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="patientName">Patient Name:</label>
-                    <input type="text" id="patientName" name="patientName">
+                    <input type="text" id="patientName" name="patient_name" required>
                 </div>
                 <div class="form-group">
                     <label for="patientId">Patient ID:</label>
-                    <input type="text" id="patientId" name="patientId">
+                    <input type="text" id="patientId" name="patient_id" required>
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="number" id="age" name="age">
+                    <input type="number" id="age" name="age" required>
                 </div>
                 <div class="form-group">
                     <label for="drugSearch">Drug Search:</label>
-                    <input type="text" id="drugSearch" name="drugSearch">
+                    <input type="text" id="drugSearch" name="drug_search">
                     <button type="button" id="searchButton">Search</button>
                 </div>
                 <div class="form-group">

@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Healthcare | Register </title>
-    <link rel="shortcut icon" href="{{asset('notes_medical_solid.ico')}}" type="image/x-icon">
+    <title>Healthcare | Register</title>
+    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/registerStyles.css') }}">
-
 </head>
 <body>
     
     <main>
         <h1>Register</h1>
+
+        <!-- Role Selection -->
         <div class="radio-container">
             <label class="radio-label">
                 <input type="radio" name="role" value="doctor" checked>
@@ -29,7 +30,10 @@
                 <span class="radio-mark"></span>
             </label>
         </div>
-        <form action="./login.html" method="post">
+
+        <!-- Registration Form -->
+        <form action="{{ route('register') }}" method="POST">
+            @csrf
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             

@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Healthcare | About Us </title>
-    <link rel="shortcut icon" href="{{asset('notes_medical_solid.ico')}}" type="image/x-icon">
+    <title>Healthcare | About Us</title>
+    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/aboutStyles.css') }}">
-
 </head>
 <body>
-    
+
     <main>
         <section class="about-content">
             <h1>About Us</h1>
@@ -28,7 +27,7 @@
             <p>Our team is composed of experienced healthcare professionals and dedicated individuals who are passionate about improving access to healthcare information. We work tirelessly to ensure that the information we provide is accurate, up-to-date, and trustworthy.</p>
 
             <h2>Contact Us</h2>
-            <p>If you have any questions or need more information, please don't hesitate to <a href="/contact">contact us</a>. We're here to help you on your journey to better health.</p>
+            <p>If you have any questions or need more information, please don't hesitate to <a href="{{ url('/contact') }}">contact us</a>. We're here to help you on your journey to better health.</p>
         </section>
     </main>
 
