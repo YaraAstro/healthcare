@@ -16,8 +16,10 @@
 
     <div class="container">
         <h1>Appointment Form</h1>
-        <form action="{{ route('appointment.store') }}" method="POST" class="appointment-form">
+
+        <form action="{{ route('appointment.doctor') }}" method="post" class="appointment-form">
             @csrf
+            @method('post')
             <!-- Doctor Information -->
             <div class="form-section">
                 <h2>Doctor Information</h2>
@@ -25,25 +27,29 @@
                     <label for="doctor-name">Doctor Name</label>
                     <input type="text" id="doctor-name" name="doctor_name" required>
                 </div>
-
+    
                 <div class="form-group">
                     <label for="doctor-id">Doctor ID</label>
                     <input type="text" id="doctor-id" name="doctor_id" required>
                 </div>
-
+    
                 <div class="form-group">
                     <label for="speciality">Speciality</label>
                     <input type="text" id="speciality" name="speciality" required>
                 </div>
-
+    
                 <div class="form-group">
                     <label for="doctor-email">Email</label>
                     <input type="email" id="doctor-email" name="doctor_email" required>
                 </div>
-
+    
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
 
+        </form>
+        <form action="{{ route('appointment.patient') }}" method="POST" class="appointment-form">
+            @csrf
+            @method('post')
             <!-- Patient Information -->
             <div class="form-section">
                 <h2>Patient Information</h2>
@@ -69,6 +75,7 @@
 
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
+
         </form>
     </div>
 
