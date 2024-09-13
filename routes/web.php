@@ -2,23 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\HandleLogin;
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', function () {
-    return view('login');
-}) -> name('login');
+Route::get('/login', [HandleLogin::class, 'index']) -> name('login');
 
+Route::post('/login', [HandleLogin::class, 'login']) -> name('login.action');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('showRegisterForm');
+Route::get('/register', [RegistrationController::class, 'index']) -> name('register');
 
-Route::post('/register', [RegistrationController::class, 'register']) -> name('register');
-
-
+Route::post('/register', [RegistrationController::class, 'register']) -> name('register.action');
 
 Route::get('/about', function () {
     return view('about');

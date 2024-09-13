@@ -15,8 +15,9 @@
     
     <main>
         <h1>Login</h1>
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('login.action') }}" method="POST">
             @csrf
+            @method('post')
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             

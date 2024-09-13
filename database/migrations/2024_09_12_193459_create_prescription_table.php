@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('amount', 10)->nullable();
             $table->enum('status', ['pending', 'paid'])->default('pending');
             $table->timestamp('date')->useCurrent();
+            $table->timestamps();
 
             $table->foreign('appo_id')->references('id')->on('appointment');
             $table->foreign('patient_id')->references('id')->on('patient');

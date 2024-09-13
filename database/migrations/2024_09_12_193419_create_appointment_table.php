@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('doctor_id', 5);
             $table->date('date');
             $table->enum('status', ['pending', 'approve', 'reject', 'done'])->default('pending');
+            $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patient');
             $table->foreign('doctor_id')->references('id')->on('doctor');

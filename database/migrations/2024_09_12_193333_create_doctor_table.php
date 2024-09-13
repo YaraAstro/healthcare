@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('speciality')->nullable();
             $table->string('email', 100)->unique();
             $table->string('password', 100);
+            $table->timestamps();
         });
     }
 

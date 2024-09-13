@@ -10,28 +10,40 @@ use Illuminate\Support\Facades\Log;
 
 class RegistrationController extends Controller
 {
+
+    public function index () {
+        return view('register');
+    }
+
     public function register (Request $request) {
 
         $request->validate([
             'username' => 'required|string|max:50|unique:patient,username|unique:doctor,username',
             'email' => 'required|string|email|max:100|unique:patient,email|unique:doctor,email',
             'password' => 'required|string|min:8',
-            'role' => 'required|string|in:doctor,patient',
+            'selected_role' => 'required|string|in:doctor,patient',
         ]);
 
-        $data = $request->only('username', 'email', 'password');
+        // $data = $request->only('username', 'email', 'password');
 
         try {
 
-            if ($request->role === 'doctor') {
-                $data['id'] = GenerateID::generateId('DC');
+            $new_id = $request->selected_role === 'doctor' ? GenerateID::generateId('DC') : GenerateID::generateId('PT');
+
+            $data = [
+                'id' => $new_id,
+                'username' => $request -> input('username'),
+                'email' => $request -> input('email'),
+                'password' => $request -> input('password'),
+            ];
+
+            if ($request->selected_role === 'doctor') {
                 Doctor::create($data);
             } else {
-                $data['id'] = GenerateID::generateId('PT');
                 Patient::create($data);
             }
     
-            return redirect()->back()->with('success', 'Registration successful');
+            return redirect()->back()->with('success', 'Registration successful')->with('user', $data);
         } catch (\Exception $e) {
             
             Log::error('Registration error', [

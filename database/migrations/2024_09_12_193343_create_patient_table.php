@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->string('email', 100)->unique();
             $table->string('password', 100);
+            $table->timestamps();
         });
     }
 

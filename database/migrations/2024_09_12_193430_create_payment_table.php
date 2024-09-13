@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cc_number', 20)->nullable();
             $table->string('amount', 10)->nullable();
             $table->enum('status', ['pending', 'success', 'declined'])->nullable();
+            $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patient');
             $table->foreign('appo_id')->references('id')->on('appointment');
