@@ -4,18 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\HandleLogin;
 use App\Http\Controllers\ManageAppointment;
+use App\Http\Controllers\HandleDoctor;
+use App\Http\Controllers\HandlePatient;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', view('index'));
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about',  view('about'));
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', view('contact'));
 
 Route::get('/login', [HandleLogin::class, 'index']) -> name('login');
 
@@ -31,26 +27,25 @@ Route::post('/appointment', [ManageAppointment::class, 'patient_appo']) -> name(
 
 Route::post('/appointment', [ManageAppointment::class, 'doctor_appo']) -> name('appointment.doctor');
 
-// Route::get('/appointment', function () {
-//     return view('appointment');
+Route::get('/appointment/symptoms', [ManageAppointment::class, 'symptoms_form']) -> name('appointment.symptoms');
+
+Route::post('/appointment/symptoms', [ManageAppointment::class, 'patient_symptoms']) -> name('appointment.symptoms.action');
+
+Route::get('/appointment/examine', [ManageAppointment::class, 'examine_form']) -> name('appointment.examine');
+
+Route::post('/appointment/examine', [ManageAppointment::class, 'doctor_examine']) -> name('appointment.examine.action');
+
+Route::get('/doctor', [HandleDoctor::class, 'index']) -> name('profile.doctor');
+
+Route::get('/patient', [HandlePatient::class, 'index']) -> name('profile.patient');
+
+// Route::get('/doctor/{username}', function () {
+//     return view('profileDoctor');
 // });
 
-// Route::get('/appointment/symptom', function () {
-//     return view('checkupForm');
+// Route::get('/patient/{username}', function () {
+//     return view('profilePatient');
 // });
-
-// Route::get('/appointment/examine', function () {
-//     return view('patientInfoForm');
-// });
-
-
-Route::get('/profile/doctor', function () {
-    return view('profileDoctor');
-});
-
-Route::get('/profile/patient', function () {
-    return view('profilePatient');
-});
 
 
 Route::get('/precscription', function () {

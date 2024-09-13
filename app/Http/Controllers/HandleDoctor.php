@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class HandleDoctor extends Controller
 {
-    // public function create () {}
+    public function index () {
+        return view('profileDoctor');
+    }
 }
