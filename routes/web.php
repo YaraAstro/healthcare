@@ -7,15 +7,23 @@ use App\Http\Controllers\ManageAppointment;
 use App\Http\Controllers\HandleDoctor;
 use App\Http\Controllers\HandlePatient;
 
-Route::get('/', view('index'));
+Route::get('/', function () { 
+    return view('index');
+});
 
-Route::get('/about',  view('about'));
+Route::get('/about', function () { 
+    return view('about');
+});
 
-Route::get('/contact', view('contact'));
+Route::get('/contact', function () { 
+    return view('contact');
+});
 
 Route::get('/login', [HandleLogin::class, 'index']) -> name('login');
 
 Route::post('/login', [HandleLogin::class, 'login']) -> name('login.action');
+
+Route::post('/logout', [HandleLogin::class, 'logout']) -> name('logout');
 
 Route::get('/register', [RegistrationController::class, 'index']) -> name('register');
 
@@ -35,9 +43,9 @@ Route::get('/appointment/examine', [ManageAppointment::class, 'examine_form']) -
 
 Route::post('/appointment/examine', [ManageAppointment::class, 'doctor_examine']) -> name('appointment.examine.action');
 
-Route::get('/doctor', [HandleDoctor::class, 'index']) -> name('profile.doctor');
+Route::get('/doctor/{username}', [HandleDoctor::class, 'index']) -> name('profile.doctor');
 
-Route::get('/patient', [HandlePatient::class, 'index']) -> name('profile.patient');
+Route::get('/patient/{username}', [HandlePatient::class, 'index']) -> name('profile.patient');
 
 // Route::get('/doctor/{username}', function () {
 //     return view('profileDoctor');

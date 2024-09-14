@@ -9,16 +9,27 @@ use App\Utils\GenerateID;
 
 class ManageAppointment extends Controller
 {
+
+    private function getter () {
+        $user_id = session('id');
+        $user = session('role') === 'doctor' ? Doctor::find($user_id) : Patient::find($user_id) ;
+
+        return $user;
+    }
+
     public function index () {
-        return view('appointment');
+        $user = Self::getter();
+        return view('appointment', ['user' => $user]);
     }
 
     public function symptoms_form () {
-        return view('checkupForm');
+        $user = Self::getter();
+        return view('checkupForm', ['user' => $user]);
     }
 
     public function examine_form () {
-        return view('patientInfoForm');
+        $user = Self::getter();
+        return view('patientInfoForm', ['user' => $user]);
     }
 
     public function patient_appo (Request $request) {
@@ -56,7 +67,7 @@ class ManageAppointment extends Controller
             'doctor_id' => 'required|string|size:5|regex:/^DC/', 
             'doctor_name' => 'nullable|string|max:255',
             'speciality' => 'nullable|string|max:255',
-            'doctor_email' => 'required|string|email|max:100|unique:doctor,email',
+            'doctor_email' => 'required|string|email|max:100|unique:doctor,email' . $request->input('doctor_id'),,
         ]);
 
         $get_id = $request -> input('doctor_id');

@@ -42,6 +42,12 @@ class RegistrationController extends Controller
             } else {
                 Patient::create($data);
             }
+
+            session([
+                'role' => $request -> selected_role,
+                'id' => $new_id,
+                'username' => $request -> input('username'), 
+            ]);
     
             return redirect()->back()->with('success', 'Registration successful')->with('user', $data);
         } catch (\Exception $e) {
