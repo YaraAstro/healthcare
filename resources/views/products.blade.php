@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Healthcare | Store</title>
-    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
+@extends('layout')
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{{-- title --}}
+@section('title', 'Healthcare | Store')
+
+{{-- style css --}}
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/productsStyles.css') }}">
-</head>
-<body>
-    
-    <main class="container text-center mt-5">
+@endsection
+
+{{-- content --}}
+@section('content')
+    <div class="container text-center mt-5">
         <h1>Our Products</h1>
         <p>Check out our wide range of products below.</p>
         <div class="row">
@@ -52,8 +48,11 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+@endsection
 
+{{-- scripts --}}
+@section('scripts')
     <script>
         function buyNow(productName, price) {
             // Implement the logic for the Buy Now button
@@ -61,7 +60,6 @@
             // Optionally, redirect to the payment page or add to cart
             // window.location.href = "paymentPage.html";
         }
-    </script>
+    </script> 
+@endsection
 
-</body>
-</html>

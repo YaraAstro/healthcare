@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Healthcare | Check Up</title>
-    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
+@extends('layout')
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{{-- title --}}
+@section('title', 'Healthcare | Check Up')
+
+{{-- style css --}}
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/checkUpStyles.css') }}">
-</head>
-<body>
+@endsection
 
-    <main class="container">
+{{-- content --}}
+@section('content')
+    <div class="container">
         <h1>Doctor Checkup Form</h1>
 
         <!-- Form Start -->
@@ -81,11 +77,13 @@
                 </div>
             </div>
         </form>
-    </main>
+    </div>
+@endsection
 
+{{-- scripts --}}
+@section('scripts')
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-</body>
-</html>
+@endsection
+

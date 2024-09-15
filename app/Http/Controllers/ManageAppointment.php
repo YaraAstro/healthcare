@@ -79,7 +79,7 @@ class ManageAppointment extends Controller
         $row -> email = $request -> input('doctor_email');
 
         $row -> save();
-
+    
     }
 
     public function patient_symptoms (Request $request) {

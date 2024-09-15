@@ -19,6 +19,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/error', function () { 
+    return view('error');
+}) -> name('error');
+
 Route::get('/login', [HandleLogin::class, 'index']) -> name('login');
 
 Route::post('/login', [HandleLogin::class, 'login']) -> name('login.action');

@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Healthcare | Payment</title>
-    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
+@extends('layout')
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{{-- title --}}
+@section('title', 'Healthcare | Payment')
+
+{{-- style css --}}
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/payStyles.css') }}">
+@endsection
 
-</head>
-<body>
-    
+{{-- content --}}
+@section('content')
     <div class="container">
         <form action="{{ route('payment.process') }}" method="POST" onsubmit="showThankYouMessage(event)">
             @csrf
@@ -48,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col">
                     <h3 class="title">Payment</h3>
                     <div class="inputBox">
@@ -81,8 +76,11 @@
             </div>
             <input type="submit" value="Proceed to Checkout" class="submit-btn">
         </form>
-    </div> 
+    </div>
+@endsection
 
+{{-- scripts --}}
+@section('scripts')
     <script>
         function showThankYouMessage(event) {
             event.preventDefault(); // Prevent the form from submitting
@@ -91,6 +89,5 @@
             // window.location.href = "thankyou.html";
         }
     </script>
+@endsection
 
-</body>
-</html>

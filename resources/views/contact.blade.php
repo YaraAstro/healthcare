@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Healthcare | Contact Us</title>
-    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
+@extends('layout')
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{{-- title --}}
+@section('title', 'Healthcare | Contact Us')
+
+{{-- style css --}}
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/contactStyles.css') }}">
-</head>
-<body>
-    
+@endsection
+
+{{-- content --}}
+@section('content')
     <main class="container text-center mt-5">
         <h1>Contact Us</h1>
         <p>If you have any questions, feel free to reach out to us through the form below.</p>
@@ -43,10 +39,12 @@
             <input type="submit" value="Submit" class="btn btn-primary">
         </form>
     </main>
+@endsection
 
+{{-- scripts --}}
+@section('scripts')
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+@endsection
 
-</body>
-</html>

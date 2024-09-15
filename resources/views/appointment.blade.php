@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Healthcare | Appointment</title>
-    <link rel="shortcut icon" href="{{ asset('notes_medical_solid.ico') }}" type="image/x-icon">
+@extends('layout')
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{{-- title --}}
+@section('title', 'Healthcare | Appointment')
+
+{{-- style css --}}
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/appoStyles.css') }}">
-</head>
-<body>
+@endsection
 
+{{-- content --}}
+@section('content')
     <div class="container">
         <h1>Appointment Form</h1>
 
@@ -33,17 +29,17 @@
                     <label for="doctor-name">Doctor Name</label>
                     <input type="text" id="doctor-name" name="doctor_name" required>
                 </div>
-    
+
                 <div class="form-group">
                     <label for="speciality">Speciality</label>
                     <input type="text" id="speciality" name="speciality" required>
                 </div>
-    
+
                 <div class="form-group">
                     <label for="doctor-email">Email</label>
                     <input type="email" id="doctor-email" name="doctor_email" required>
                 </div>
-    
+
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
 
@@ -102,10 +98,13 @@
         </form>
 
     </div>
+@endsection
 
+{{-- scripts --}}
+@section('scripts')
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-</body>
-</html>
+@endsection
+
+

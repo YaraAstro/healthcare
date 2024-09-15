@@ -49,7 +49,8 @@ class RegistrationController extends Controller
                 'username' => $request -> input('username'), 
             ]);
     
-            return redirect()->back()->with('success', 'Registration successful')->with('user', $data);
+            return redirect() -> route('profile.patient', ['username' => session('username')]);
+            
         } catch (\Exception $e) {
             
             Log::error('Registration error', [
