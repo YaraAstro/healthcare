@@ -14,7 +14,7 @@
         <h1>Doctor Checkup Form</h1>
 
         <!-- Form Start -->
-        <form action="{{ route('checkup.store') }}" method="POST" class="checkup-form">
+        <form action="{{ route('appointment.symptoms.action') }}" method="POST" class="checkup-form">
             @csrf
             <!-- Patient Name -->
             <div class="form-group">
@@ -64,15 +64,15 @@
                 <div class="product-container">
                     <div class="product">
                         <p>Product 1</p>
-                        <button type="button" onclick="window.location.href='{{ route('payment') }}';">Buy Now</button>
+                        <button type="button" onclick="window.location.href=''>Buy Now</button>
                     </div>
                     <div class="product">
                         <p>Product 2</p>
-                        <button type="button" onclick="window.location.href='{{ route('payment') }}';">Buy Now</button>
+                        <button type="button" onclick="window.location.href=''>Buy Now</button>
                     </div>
                     <div class="product">
                         <p>Product 3</p>
-                        <button type="button" onclick="window.location.href='{{ route('payment') }}';">Buy Now</button>
+                        <button type="button" onclick="window.location.href=''>Buy Now</button>
                     </div>
                 </div>
             </div>

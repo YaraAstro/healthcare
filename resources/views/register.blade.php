@@ -12,6 +12,10 @@
 @section('content')
     <h1>Register</h1>
 
+    @if ($error -> any())
+        <div class="alert alert-danger">{{ $error }}</div>
+    @endif
+
     <!-- Registration Form -->
     <form action="{{ route('register.action') }}" method="POST">
         @csrf

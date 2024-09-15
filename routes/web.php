@@ -9,15 +9,15 @@ use App\Http\Controllers\HandlePatient;
 
 Route::get('/', function () { 
     return view('index');
-});
+}) -> name('home');
 
 Route::get('/about', function () { 
     return view('about');
-});
+}) -> name('about');
 
 Route::get('/contact', function () { 
     return view('contact');
-});
+}) -> name('contact');
 
 Route::get('/error', function () { 
     return view('error');
@@ -27,7 +27,7 @@ Route::get('/login', [HandleLogin::class, 'index']) -> name('login');
 
 Route::post('/login', [HandleLogin::class, 'login']) -> name('login.action');
 
-Route::post('/logout', [HandleLogin::class, 'logout']) -> name('logout');
+Route::get('/logout', [HandleLogin::class, 'logout']) -> name('logout');
 
 Route::get('/register', [RegistrationController::class, 'index']) -> name('register');
 
@@ -35,9 +35,9 @@ Route::post('/register', [RegistrationController::class, 'register']) -> name('r
 
 Route::get('/appointment', [ManageAppointment::class, 'index']) -> name('appointment');
 
-Route::post('/appointment', [ManageAppointment::class, 'patient_appo']) -> name('appointment.patient');
+Route::post('/appointment/patient', [ManageAppointment::class, 'patient_appo']) -> name('appointment.patient');
 
-Route::post('/appointment', [ManageAppointment::class, 'doctor_appo']) -> name('appointment.doctor');
+Route::post('/appointment/doctor', [ManageAppointment::class, 'doctor_appo']) -> name('appointment.doctor');
 
 Route::get('/appointment/symptoms', [ManageAppointment::class, 'symptoms_form']) -> name('appointment.symptoms');
 
@@ -65,7 +65,7 @@ Route::get('/precscription', function () {
 });
 
 Route::get('/payment', function () {
-    return view('payment');
+    return view('payment') -> name('payment');
 });
 
 Route::get('/product', function () {
@@ -74,7 +74,7 @@ Route::get('/product', function () {
 
 Route::get('/product/cart', function () {
     return view('cart');
-});
+}) -> name('cart');
 
 
 

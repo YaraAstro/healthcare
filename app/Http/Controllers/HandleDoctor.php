@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Doctor;
 
 class HandleDoctor extends Controller
 {
     public function index () {
-        return view('profileDoctor');
+        $user_id = session('id');
+
+        $user = Doctor::find($user_id);
+
+        return view('profileDoctor', ['user' => $user]);
     }
 }

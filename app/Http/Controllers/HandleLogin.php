@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+    
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Patient;
@@ -30,8 +30,8 @@ class HandleLogin extends Controller
             Session::put('id', $is_it_patient -> id);
             Session::put('username', $is_it_patient -> username);
             Session::put('role', 'patient');
-
-            return redirect() -> route('profile.patient', ['username' => $is_it_patient -> username]);
+            
+            return redirect() -> route('appointment');
         
         } else if ($is_it_doctor && $is_it_doctor -> password === $credentials['password']) {
         
@@ -39,10 +39,10 @@ class HandleLogin extends Controller
             Session::put('username', $is_it_doctor -> username);
             Session::put('role', 'doctor');
         
-            return redirect() -> route('profile.doctor', ['username' => $is_it_doctor -> username]);
+            return redirect() -> route('appointment');
         
         } else {
-
+            return redirect() -> back() -> withErrors(['error' => 'email or password is wrong']);
         }
 
     }

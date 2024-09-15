@@ -10,6 +10,14 @@ class Patient extends Model
 {
     use HasFactory;
     use Notifiable;
+
+    // VARCHAR id
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected $casts = [
+        'id' => 'string',
+    ];
    
     protected $table = 'patient';
 

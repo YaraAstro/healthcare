@@ -24,8 +24,6 @@ class RegistrationController extends Controller
             'selected_role' => 'required|string|in:doctor,patient',
         ]);
 
-        // $data = $request->only('username', 'email', 'password');
-
         try {
 
             $new_id = $request->selected_role === 'doctor' ? GenerateID::generateId('DC') : GenerateID::generateId('PT');
@@ -42,14 +40,9 @@ class RegistrationController extends Controller
             } else {
                 Patient::create($data);
             }
-
-            session([
-                'role' => $request -> selected_role,
-                'id' => $new_id,
-                'username' => $request -> input('username'), 
-            ]);
     
-            return redirect() -> route('profile.patient', ['username' => session('username')]);
+            // return redirect() -> route('profile.patient', ['username' => session('username')]);
+            return redirect() -> route('login') -> with('success', 'Registration successful');
             
         } catch (\Exception $e) {
             
@@ -59,7 +52,7 @@ class RegistrationController extends Controller
                 'line' => $e->getLine(),
             ]);
 
-            return redirect()->back()->withErrors(['error' => 'An error occurred during registration. Please try again.']);
+            return redirect() -> back() -> withErrors(['error' => 'Please try again later !']);
 
         }
 

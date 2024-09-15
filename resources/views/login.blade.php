@@ -10,7 +10,16 @@
 
 {{-- content --}}
 @section('content')
-    <h1>Login</h1>
+    <h1>Login</h1>`
+
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if ($errors -> any())
+        <div class="alert alert-danger">{{ $errors }}</div>
+    @endif
+
     <form action="{{ route('login.action') }}" method="POST">
         @csrf
         @method('post')
