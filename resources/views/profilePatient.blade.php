@@ -30,25 +30,72 @@
         </div>
     </div>
     <div class="subframe">
-        <p class="topic">Appointments</p>
-
-        <div class="table">
+        <p class="topic">Approved Appointments</p>
+        @foreach ($approve as $green)
             <div class="row">
                 {{-- date --}}
-                <div class="data">Lorem, ipsum.</div> 
-                {{-- patient --}}
-                <div class="data">Lorem, ipsum.</div>
+                <div class="data">{{ $green['date'] }}</div> 
+                {{-- doctor --}}
+                <div class="data">{{ $green['doctor'] }}</div>
                 {{-- status --}}
-                <div class="data">Lorem, ipsum.</div>
+                <div class="data">{{ $green['status'] }}</div>
                 {{-- action --}}
                 <div class="data">
-                    <a href="">Lorem, ipsum.</a>
+                    <a href="">View</a>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
     <div class="subframe">
-        <p class="topic">History</p>
+        <p class="topic">Pending Appointments</p>
+        @foreach ($pending as $yellow)
+            <div class="row">
+                {{-- date --}}
+                <div class="data">{{ $yellow['date'] }}</div> 
+                {{-- doctor --}}
+                <div class="data">{{ $yellow['doctor'] }}</div>
+                {{-- status --}}
+                <div class="data">{{ $yellow['status'] }}</div>
+                {{-- action --}}
+                <div class="data">
+                    <a href="">View</a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <div class="subframe">
+        <p class="topic">Rejected Appointments</p>
+        @foreach ($reject as $red)
+            <div class="row">
+                {{-- date --}}
+                <div class="data">{{ $red['date'] }}</div> 
+                {{-- doctor --}}
+                <div class="data">{{ $red['doctor'] }}</div>
+                {{-- status --}}
+                <div class="data">{{ $red['status'] }}</div>
+                {{-- action --}}
+                <div class="data">
+                    <a href="">View</a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <div class="subframe">
+        <p class="topic">Completed Appointments</p>
+            @foreach ($done as $blue)
+                <div class="row">
+                    {{-- date --}}
+                    <div class="data">{{ $blue['date'] }}</div> 
+                    {{-- doctor --}}
+                    <div class="data">{{ $blue['doctor'] }}</div>
+                    {{-- status --}}
+                    <div class="data">{{ $blue['status'] }}</div>
+                    {{-- action --}}
+                    <div class="data">
+                        <a href="">View</a>
+                    </div>
+                </div>
+            @endforeach
     </div>
 </div>
 @endsection

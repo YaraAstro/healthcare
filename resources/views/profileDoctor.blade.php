@@ -33,18 +33,20 @@
             <p class="topic">Appointments</p>
 
             <div class="table">
+                @foreach ($appo as $appointment)
                 <div class="row">
                     {{-- date --}}
-                    <div class="data">Lorem, ipsum.</div> 
+                    <div class="data">{{ $appointment -> date }}</div> 
                     {{-- patient --}}
-                    <div class="data">Lorem, ipsum.</div>
+                    <div class="data">{{ $appointment -> patient_id }}</div>
                     {{-- status --}}
-                    <div class="data">Lorem, ipsum.</div>
+                    <div class="data">{{ $appointment -> status }}</div>
                     {{-- action --}}
                     <div class="data">
                         <a href="">Lorem, ipsum.</a>
                     </div>
                 </div>
+            @endforeach
             </div>
         </div>
         <div class="subframe">
