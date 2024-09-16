@@ -1,0 +1,133 @@
+.frame {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.subframe {
+    width: 80%;
+    position: relative;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px gray;
+    outline-offset: -17px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subframe .row:nth-child(2) {
+    margin-top: 25px;
+}
+
+.subframe:nth-child(1) {
+    background-color: gainsboro;
+    outline: none;
+    justify-content: space-around;
+    /* font-size: 1.25em; */
+    flex-direction: row;
+    gap: unset;
+}
+
+.subframe:nth-child(1) .box h1 {
+    font-size: 2.5em;
+}
+
+.subframe:nth-child(1) p {
+    font-size: 1.5em;
+}
+
+.subframe:nth-child(1) a p {
+    padding: 10px 25px;
+    border-radius: 15px;
+    min-width: 275px;
+    background-color: cornflowerblue;
+    color: whitesmoke;
+    text-transform: capitalize;
+    font-size: 1em;
+    text-align: center;
+    width: fit-content;
+    transition: .35s all ease-in-out;
+}
+
+.subframe:nth-child(1) a:hover {
+    text-decoration: none;
+}
+
+.subframe:nth-child(1) a p:hover {
+    text-decoration: none;
+    box-shadow: 0 2px 3px silver;
+}
+
+.subframe:nth-child(2) {
+    background-color: lightgreen;
+    outline: 3px solid green;
+}
+.subframe:nth-child(3) {
+    background-color: rgb(255, 230, 87);
+    outline: 3px solid goldenrod;
+}
+
+.subframe:nth-child(4) {
+    background-color: lightsalmon;
+    outline: 3px solid maroon;
+}
+.subframe:nth-child(5) {
+    background-color: lightblue;
+    outline: 3px solid cornflowerblue;
+}
+
+.subframe .topic {
+    position: absolute;
+    width: fit-content;
+    padding: 0 15px;
+    font-size: 1.15em;
+    font-weight: 600;
+    top: 1px;
+    left: 25px;
+}
+
+.subframe:nth-child(2) .topic {
+    color: green;
+    background-color: lightgreen;
+}
+.subframe:nth-child(3) .topic {
+    color: goldenrod;
+    background-color: rgb(255, 230, 87);
+}
+.subframe:nth-child(4) .topic {
+    color: maroon;
+    background-color: lightsalmon;
+}
+.subframe:nth-child(5) .topic {
+    color: cornflowerblue;
+    background-color: lightblue;
+}
+
+/* table */
+
+.row {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(245, 245, 245, 0.5);
+}
+
+.row .data {
+    flex: 1;
+    text-align: center;
+    text-transform: capitalize;
+    border-right: 2px solid gray;
+}
+
+.row .data:last-child {
+    border-right: none;
+}

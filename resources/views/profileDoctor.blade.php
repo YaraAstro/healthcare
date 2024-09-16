@@ -32,8 +32,7 @@
         <div class="subframe">
             <p class="topic">Appointments</p>
 
-            <div class="table">
-                @foreach ($appo as $appointment)
+            @foreach ($appo as $appointment)
                 <div class="row">
                     {{-- date --}}
                     <div class="data">{{ $appointment['date'] }}</div> 
@@ -47,7 +46,6 @@
                     </div>
                 </div>
             @endforeach
-            </div>
         </div>
         <div class="subframe">
             <p class="topic">History</p>
