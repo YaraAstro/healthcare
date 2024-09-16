@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use App\Utils\GenerateID;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ManageAppointment extends Controller
 {
@@ -23,10 +25,13 @@ class ManageAppointment extends Controller
         return view('appointment', ['user' => $user]);
     }
 
-    public function symptoms_form () {
-        $user = Self::getter();
-        return view('checkupForm', ['user' => $user]);
-    }
+    public function symptoms_form() {
+        $user = Self::getter(); 
+        $doctors = Doctor::all(); // Fetch all doctors from the database
+        $doctorsList = $doctors->pluck('id', 'name')->toArray(); // Create a key-value array
+    
+        return view('checkupForm', ['user' => $user, 'doctors' => $doctorsList]);
+    }    
 
     public function examine_form () {
         $user = Self::getter();
@@ -66,7 +71,6 @@ class ManageAppointment extends Controller
             ]);
 
             // Redirect to the profile route after updating
-            // return redirect()->route('profile.patient', ['username' => session('username')]);
             return redirect() -> route('appointment.symptoms');
         } else {
             // Handle the case where the patient record is not found
@@ -101,13 +105,49 @@ class ManageAppointment extends Controller
     }
 
 
-    public function patient_symptoms (Request $request) {
+    public function patient_symptoms(Request $request)
+{
+    $request -> validate([
+        'symptoms' => 'required|string|max:1000',
+        'description' => 'required|string|max:1000',
+        'patient_id' => 'required|string|size:5|regex:/^PT/',
+        'doctor_id' => 'required|string|size:5|regex:/^DC/',
+        'pik_date' => 'required|date',
+    ]);
 
-        $request -> validate([]);
-        
+    try {
+        // Generate a new ID
         $new_id = GenerateID::generateId('AP');
+        
+        // Prepare the data for the new appointment
+        $data = [
+            'id' => $new_id,
+            'symptoms' => $request->input('symptoms'),
+            'description' => $request->input('description'),
+            'patient_id' => $request->input('patient_id'),
+            'doctor_id' => $request->input('doctor_id'),
+            'date' => $request->input('pik_date'),
+            'status' => 'pending',
+        ];
 
+        // Create the new appointment
+        Appointment::create($data);
+
+        // Redirect to the patient profile
+        return redirect()->route('profile.patient', ['username' => session('username')]);
+    } catch (\Exception $e) {
+        // Log the error
+        Log::error('Registration error', [
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+        ]);
+
+        // Redirect back with error message
+        return redirect()->back()->withErrors(['error' => 'Can\'t make an appointment now!']);
     }
+}
+
 
     public function doctor_examine (Request $request) {
         
