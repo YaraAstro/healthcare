@@ -21,7 +21,8 @@
                     <div class="medBody">
                         <h5>{{ $med -> name }}</h5>
                         <p>{{ $med -> description }}</p>
-                        <a href="" class="addBtn">Add to Cart +</a>
+                        <h2>{{ $med -> amount }}</h2>
+                        <a href="{{ route('cart') }}" class="addBtn">Add to Cart +</a>
                     </div>
                 </div>
             @endforeach
