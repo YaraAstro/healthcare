@@ -1,62 +1,89 @@
 /* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Light background color */
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Container for the product */
-  .product {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto; /* Center the product container */
-    padding: 20px;
-    background-color: #ffffff; /* White background for the product container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  /* Product heading */
-  .product h2 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #333333; /* Darker text color */
-  }
-  
-  /* Product price styling */
-  .product p {
-    font-size: 20px;
-    color: #007bff; /* Blue color for price */
-    margin: 10px 0;
-  }
-  
-  /* Button styling */
-  .btn {
-    display: inline-block;
-    padding: 12px 20px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #28a745; /* Green color for button */
-    text-decoration: none;
-    border-radius: 5px; /* Rounded corners */
-    text-align: center;
-  }
-  
-  .btn:hover {
-    background-color: #218838; /* Darker green for button on hover */
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .product {
-      width: 90%; /* Increase width on smaller screens */
-      padding: 15px;
-    }
-  
-    .btn {
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Light background color */
+  margin: 0;
+  padding: 0;
+}
+
+.frame {
+  margin-top: 1.5em;
+  width: 90%;
+  left: 5%;
+  position: relative;
+}
+
+.frame h1 {
+  font-size: 2em;
+  color: cornflowerblue;
+  text-align: center;
+}
+
+.frame p {
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.medCont {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+  justify-content: space-around;
+  min-height: 500px;
+}
+
+.medCard {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  box-shadow: 0 3px 5px silver;
+}
+
+.medCard img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.medCard .medBody {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.medCard .medBody h5 {
+  font-size: 1.25em;
+  text-align: center;
+  width: fit-content;
+}
+
+.medCard .medBody p {
+  font-size: 1em;
+  text-align: center;
+  width: fit-content;
+}
+
+.medCard .addBtn {
+  width: 100%;
+  border-radius: 15px;
+  background-color: #28a745;
+  padding: 10px 5px;
+  font-weight: 600;
+  text-align: center;
+  color: whitesmoke;
+  transition: all ease-in-out .35s;
+}
+
+
+.medCard .addBtn:hover {
+  background-color: rgb(0, 59, 0);
+  text-decoration: none;
+  box-shadow: 0 2px 3px silver;
+}

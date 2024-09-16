@@ -80,15 +80,15 @@ CREATE TABLE prescription (
 
 -- since admin panel not connected yet here are some sample medicine data
 INSERT INTO drug (id, name, description, img_path, amount) VALUES
-('MD001', 'Aspirin', 'Pain reliever and anti-inflammatory medication.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aspirin_100mg.jpg/1024px-Aspirin_100mg.jpg', '50.00'),
-('MD002', 'Ibuprofen', 'Nonsteroidal anti-inflammatory drug (NSAID) used to reduce fever, pain, and inflammation.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Ibuprofen_%28Alkem%29.jpg/800px-Ibuprofen_%28Alkem%29.jpg', '60.00'),
-('MD003', 'Paracetamol', 'Used to treat fever and mild to moderate pain.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Paracetamol.jpg/1024px-Paracetamol.jpg', '40.00'),
-('MD004', 'Amoxicillin', 'Antibiotic used to treat bacterial infections.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Amoxicillin.jpg/1024px-Amoxicillin.jpg', '150.00'),
-('MD005', 'Metformin', 'Medication used to manage type 2 diabetes.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Metformin_tablets.jpg/1024px-Metformin_tablets.jpg', '120.00'),
-('MD006', 'Lisinopril', 'Used to treat high blood pressure and heart failure.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Lisinopril_%28Primatene%29.jpg/1024px-Lisinopril_%28Primatene%29.jpg', '200.00'),
-('MD007', 'Lipitor', 'Statin used to lower cholesterol levels.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Lipitor_tablets.jpg/1024px-Lipitor_tablets.jpg', '250.00'),
-('MD008', 'Cetirizine', 'Antihistamine used to relieve allergy symptoms.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Cetirizine.jpg/1024px-Cetirizine.jpg', '80.00'),
-('MD009', 'Simvastatin', 'Used to control high cholesterol.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Simvastatin_20mg_5_Mg%2C_Frederick_Company.jpg/1024px-Simvastatin_20mg_5_Mg%2C_Frederick_Company.jpg', '220.00'),
-('MD010', 'Prednisone', 'Corticosteroid used to treat inflammatory conditions.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Prednisone.jpg/1024px-Prednisone.jpg', '300.00'),
-('MD011', 'Hydrochlorothiazide', 'Diuretic used to treat high blood pressure and fluid retention.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Hydrochlorothiazide_25mg.jpg/1024px-Hydrochlorothiazide_25mg.jpg', '90.00'),
-('MD012', 'Albuterol', 'Bronchodilator used to treat asthma and chronic obstructive pulmonary disease (COPD).', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Albuterol_Inhaler.jpg/1024px-Albuterol_Inhaler.jpg', '350.00');
+('MD001', 'Aspirin', 'Pain reliever and anti-inflammatory medication.', 'https://medlineplus.gov/images/Medicines_share.jpg', '50.00'),
+('MD002', 'Ibuprofen', 'Nonsteroidal anti-inflammatory drug (NSAID) used to reduce fever, pain, and inflammation.', 'https://medlineplus.gov/images/Medicines_share.jpg', '60.00'),
+('MD003', 'Paracetamol', 'Used to treat fever and mild to moderate pain.', 'https://medlineplus.gov/images/Medicines_share.jpg', '40.00'),
+('MD004', 'Amoxicillin', 'Antibiotic used to treat bacterial infections.', 'https://medlineplus.gov/images/Medicines_share.jpg', '150.00'),
+('MD005', 'Metformin', 'Medication used to manage type 2 diabetes.', 'https://medlineplus.gov/images/Medicines_share.jpg', '120.00'),
+('MD006', 'Lisinopril', 'Used to treat high blood pressure and heart failure.', 'https://medlineplus.gov/images/Medicines_share.jpg', '200.00'),
+('MD007', 'Lipitor', 'Statin used to lower cholesterol levels.', 'https://medlineplus.gov/images/Medicines_share.jpg', '250.00'),
+('MD008', 'Cetirizine', 'Antihistamine used to relieve allergy symptoms.', 'https://medlineplus.gov/images/Medicines_share.jpg', '80.00'),
+('MD009', 'Simvastatin', 'Used to control high cholesterol.', 'https://medlineplus.gov/images/Medicines_share.jpg', '220.00'),
+('MD010', 'Prednisone', 'Corticosteroid used to treat inflammatory conditions.', 'https://medlineplus.gov/images/Medicines_share.jpg', '300.00'),
+('MD011', 'Hydrochlorothiazide', 'Diuretic used to treat high blood pressure and fluid retention.', 'https://medlineplus.gov/images/Medicines_share.jpg', '90.00'),
+('MD012', 'Albuterol', 'Bronchodilator used to treat asthma and chronic obstructive pulmonary disease (COPD).', 'https://medlineplus.gov/images/Medicines_share.jpg', '350.00');

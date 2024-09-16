@@ -120,7 +120,6 @@ class ManageAppointment extends Controller
         }
     }
 
-
     public function patient_symptoms(Request $request) {
         $request -> validate([
             'symptoms' => 'required|string|max:1000',

@@ -28,7 +28,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('cart') }}">Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('show.meds') }}">Product</a></li>
                     @if (session()->has('username'))
                         <li class="nav-item">
                             @php

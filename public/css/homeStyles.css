@@ -12,7 +12,6 @@ body {
     animation: backgroundAnimation 15s infinite;
 }
 
-
 @keyframes backgroundAnimation {
     0% { background-image: url('../images/img6.jpg'); }
     33% { background-image: url('../images/img7.jpg'); }
@@ -26,8 +25,6 @@ header {
     padding: 10px 0;
 }
 
-
-
 footer {
     background-color: rgba(76, 175, 80, 0.8);
     color: #fff;
@@ -39,7 +36,7 @@ footer {
 }
 
 /* Main content styles */
-main {
+.container {
     padding: 20px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);

@@ -45,6 +45,7 @@ main {
     background-color: rgba(255, 255, 255, 0.8);
     margin: 50px auto;
     width: 80%;
+    min-height: fit-content;
     border-radius: 10px;
 }
 

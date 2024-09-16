@@ -10,7 +10,7 @@
 
 {{-- content --}}
 @section('content')
-    <main class="container text-center mt-5">
+    <div class="container text-center mt-5">
         <h1>Contact Us</h1>
         <p>If you have any questions, feel free to reach out to us through the form below.</p>
 
@@ -38,7 +38,7 @@
             <!-- Submit Button -->
             <input type="submit" value="Submit" class="btn btn-primary">
         </form>
-    </main>
+    </div>
 @endsection
 
 {{-- scripts --}}

@@ -10,11 +10,11 @@
 
 {{-- content --}}
 @section('content')
-    <main class="container text-center mt-5">
+    <div class="container text-center mt-5">
         <h1>Welcome to Our Website</h1>
         <p>This is the homepage. We are glad to have you here.</p>
         <a href="/login" class="btn btn-success">Get Started</a>
-    </main>
+    </div>
 @endsection
 
 {{-- scripts --}}
