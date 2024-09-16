@@ -15,7 +15,7 @@
         <p>If you have any questions, feel free to reach out to us through the form below.</p>
 
         <!-- Contact Form -->
-        <form action="{{ route('contact.store') }}" method="POST">
+        <form action="" method="POST">
             @csrf
             <!-- Name Field -->
             <div class="form-group">

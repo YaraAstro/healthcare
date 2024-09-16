@@ -16,7 +16,7 @@ class HandleDoctor extends Controller
             $patient = Patient::find($this_appo->patient_id)->name;
             $data = [
                 'id' => $this_appo->id,
-                'doctor' => $patient,
+                'patient' => $patient,
                 'date' => $this_appo->date,
                 'status' => $this_appo->status,  
             ];

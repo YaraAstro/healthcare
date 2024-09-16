@@ -20,6 +20,22 @@ class ManageAppointment extends Controller
         return $user;
     }
 
+    private function get_appo_of_patient ($appo_id) {
+        $appo = Appointment::find($appo_id);
+        $patient = Patient::find($appo -> patient_id);
+
+        $data = [
+            'name' => $patient -> name,
+            'patient_id' => $patient -> id,
+            'age' => $patient -> age,
+            'email' => $patient -> email,
+            'symptoms' => $appo -> symptoms,
+            'description' => $appo -> description ,
+        ];
+
+        return $data;
+    }
+
     public function index () {
         $user = Self::getter();
         return view('appointment', ['user' => $user]);
@@ -33,8 +49,8 @@ class ManageAppointment extends Controller
         return view('checkupForm', ['user' => $user, 'doctors' => $doctorsList]);
     }    
 
-    public function examine_form () {
-        $user = Self::getter();
+    public function examine_form ($id) {
+        $user = Self::get_appo_of_patient($id);
         return view('patientInfoForm', ['user' => $user]);
     }
 

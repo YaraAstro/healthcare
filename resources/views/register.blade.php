@@ -12,8 +12,8 @@
 @section('content')
     <h1>Register</h1>
 
-    @if ($error -> any())
-        <div class="alert alert-danger">{{ $error }}</div>
+    @if ($errors -> any())
+        <div class="alert alert-danger">{{ $errors }}</div>
     @endif
 
     <!-- Registration Form -->

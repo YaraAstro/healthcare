@@ -36,14 +36,14 @@
                 @foreach ($appo as $appointment)
                 <div class="row">
                     {{-- date --}}
-                    <div class="data">{{ $appointment -> date }}</div> 
+                    <div class="data">{{ $appointment['date'] }}</div> 
                     {{-- patient --}}
-                    <div class="data">{{ $appointment -> patient_id }}</div>
+                    <div class="data">{{ $appointment['patient'] }}</div>
                     {{-- status --}}
-                    <div class="data">{{ $appointment -> status }}</div>
+                    <div class="data">{{ $appointment['status'] }}</div>
                     {{-- action --}}
                     <div class="data">
-                        <a href="">Lorem, ipsum.</a>
+                        <a href="{{ route('appointment.examine', ['id' => $appointment['id']]) }}">View</a>
                     </div>
                 </div>
             @endforeach

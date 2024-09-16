@@ -14,31 +14,36 @@
         <!-- Patient Information Section -->
         <section class="patient-info">
             <h2>Patient's Information Form</h2>
-            <form action="{{ route('examine.store') }}" method="POST">
+            <form action="{{ route('appointment.examine.action') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="patient-name">Patient Name:</label>
-                    <input type="text" id="patient-name" name="patient_name" required>
+                    <input type="text" id="patient-name" name="patient_name" value="{{ $user['name'] }}" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="patient-id">Patient ID:</label>
-                    <input type="text" id="patient-id" name="patient_id" required>
+                    <input type="text" id="patient-id" name="patient_id" value="{{ $user['patient_id'] }}" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="number" id="age" name="age" required>
+                    <input type="number" id="age" name="age" value="{{ $user['age'] }}" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" value="{{ $user['email'] }}" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="symptoms">Symptoms:</label>
-                    <input type="text" id="symptoms" name="symptoms" required>
+                    <input type="text" id="symptoms" name="symptoms" value="{{ $user['symptoms'] }}" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" value="{{ $user['description'] }}" disabled>
                 </div>
             </form>
         </section>

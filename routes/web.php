@@ -43,7 +43,7 @@ Route::get('/appointment/symptoms', [ManageAppointment::class, 'symptoms_form'])
 
 Route::post('/appointment/symptoms', [ManageAppointment::class, 'patient_symptoms']) -> name('appointment.symptoms.action');
 
-Route::get('/appointment/examine', [ManageAppointment::class, 'examine_form']) -> name('appointment.examine');
+Route::get('/appointment/examine/{id}', [ManageAppointment::class, 'examine_form'])->name('appointment.examine');
 
 Route::post('/appointment/examine', [ManageAppointment::class, 'doctor_examine']) -> name('appointment.examine.action');
 
