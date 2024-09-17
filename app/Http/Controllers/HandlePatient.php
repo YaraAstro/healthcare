@@ -19,30 +19,44 @@ class HandlePatient extends Controller
                 'date' => $this_appo->date,
                 'status' => $this_appo->status,  
             ];
-            $list[] = $data; // Using array syntax to add elements
+            $list[] = $data;
         }
         return $list;
     }
     
     
-    public function index () {
+    public function index() {
         $user_id = session('id');
 
         $user = Patient::find($user_id);
 
-        // get appointments
-        $pending = Appointment::where('patient_id', session('id')) -> where('status', 'pending') -> get();
-        $yellow = Self::assembleAppo($pending);
+        // Get appointments by status
+        $pending = Appointment::where('patient_id', $user_id)
+                              ->where('status', 'pending')
+                              ->get();
+        $yellow = $this->assembleAppo($pending);
 
-        $approve = Appointment::where('patient_id', session('id')) -> where('status', 'approve') -> get();
-        $green = Self::assembleAppo($pending);
+        $approve = Appointment::where('patient_id', $user_id)
+                              ->where('status', 'approve')
+                              ->get();
+        $green = $this->assembleAppo($approve);
 
-        $reject = Appointment::where('patient_id', session('id')) -> where('status', 'reject') -> get();
-        $red = Self::assembleAppo($pending);
+        $reject = Appointment::where('patient_id', $user_id)
+                             ->where('status', 'reject')
+                             ->get();
+        $red = $this->assembleAppo($reject);
 
-        $done = Appointment::where('patient_id', session('id')) -> where('status', 'done') -> get();
-        $blue = Self::assembleAppo($pending);
+        $done = Appointment::where('patient_id', $user_id)
+                           ->where('status', 'done')
+                           ->get();
+        $blue = $this->assembleAppo($done);
 
-        return view('profilePatient', ['user' => $user, 'pending' => $yellow, 'approve' => $green, 'reject' => $red, 'done' => $blue]);
+        return view('profilePatient', [
+            'user' => $user,
+            'pending' => $yellow,
+            'approve' => $green,
+            'reject' => $red,
+            'done' => $blue
+        ]);
     }
 }

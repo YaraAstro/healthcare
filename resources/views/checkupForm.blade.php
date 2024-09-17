@@ -84,9 +84,9 @@
             </div>
 
             <!-- Product Section -->
-            <div class="product-section">
+            {{-- <div class="product-section">
                 <h2>Product</h2>
-                {{-- <div class="product-container">
+                <div class="product-container">
                     <div class="product">
                         <p>Product 1</p>
                         <button type="button" onclick="window.location.href=''>Buy Now</button>
@@ -99,8 +99,8 @@
                         <p>Product 3</p>
                         <button type="button" onclick="window.location.href=''>Buy Now</button>
                     </div>
-                </div> --}}
-            </div>
+                </div>
+            </div> --}}
         </form>
     </div>
 @endsection

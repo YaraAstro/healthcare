@@ -46,6 +46,18 @@ CREATE TABLE appointment (
     FOREIGN KEY (doctor_id) REFERENCES doctor(id)
 );
 
+-- Create drug table
+CREATE TABLE cart (
+    patient_id VARCHAR(5),
+    drug_id VARCHAR(5),
+    qty INT,
+    price VARCHAR(10),
+    total VARCHAR(10),
+
+    FOREIGN KEY (patient_id) REFERENCES patient(id),
+    FOREIGN KEY (drug_id) REFERENCES drug(id),
+);
+
 -- Create payment table
 CREATE TABLE payment (
     id VARCHAR(5) PRIMARY KEY CHECK (id LIKE 'PY%'),

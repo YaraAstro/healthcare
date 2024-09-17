@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Utils\GenerateID;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\Drug;
+use App\Models\Prescription;
 
 class ManageAppointment extends Controller
 {
@@ -25,6 +27,7 @@ class ManageAppointment extends Controller
         $patient = Patient::find($appo -> patient_id);
 
         $data = [
+            'id' => $appo -> id,
             'name' => $patient -> name,
             'patient_id' => $patient -> id,
             'age' => $patient -> age,
@@ -34,6 +37,14 @@ class ManageAppointment extends Controller
         ];
 
         return $data;
+    }
+
+    private function calc_price ($drug_list) {
+        $total = 0; 
+        foreach ($drug_list as $drug) {
+            $total += Drug::find($drug) -> amount;
+        } ;
+        return $total;
     }
 
     public function index () {
@@ -51,7 +62,8 @@ class ManageAppointment extends Controller
 
     public function examine_form ($id) {
         $user = Self::get_appo_of_patient($id);
-        return view('patientInfoForm', ['user' => $user]);
+        $med = Drug::all();
+        return view('patientInfoForm', ['user' => $user, 'med' => $med]);
     }
 
     public function patient_appo(Request $request) {
@@ -94,7 +106,6 @@ class ManageAppointment extends Controller
             return redirect()->back()->withErrors(['error' => 'Patient Update Failed !']);
         }
     }
-
 
     public function doctor_appo(Request $request) {
 
@@ -162,12 +173,45 @@ class ManageAppointment extends Controller
         }
     }
 
-    public function doctor_examine (Request $request) {
+    public function doctor_examine(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'patient_id' => 'required|string|size:5|regex:/^PT/',
+            'doctor_id' => 'required|string|size:5|regex:/^DC/',
+            'appo_id' => 'required|string',
+            'drug_list' => 'required|json',
+        ]);
         
-        $request -> validate([]);
-        
+        // Generate a new prescription ID
         $new_id = GenerateID::generateId('PR');
+        
+        // Decode the drug list JSON into an array
+        $med_list = json_decode($request->input('drug_list'), true);
+        
+        // Calculate the total amount for the prescribed drugs
+        $amount = $this->calc_price($med_list);
 
+        // Prepare the data for the new prescription
+        $data = [
+            'id' => $new_id,
+            'patient_id' => $request->input('patient_id'),
+            'doctor_id' => $request->input('doctor_id'),
+            'appo_id' => $request->input('appo_id'),
+            'drugs' => json_encode($med_list), // Ensure drugs are saved as JSON
+            'amount' => $amount,
+            'status' => 'pending',
+        ];
+
+        // Create a new prescription
+        Prescription::create($data);
+        
+        // Update the appointment status to "done"
+        Appointment::where('id', $request->input('appo_id'))->update(['status' => 'done']);
+
+        // Redirect to the prescription route (make sure the route name is correct)
+        return redirect()->route('prescription', ['id' => $new_id]);
     }
+
 
 }
