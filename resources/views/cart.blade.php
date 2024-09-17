@@ -17,8 +17,12 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    @if ($errors -> any())
-        <div class="alert alert-danger">{{ $errors }}</div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
     @endif
 
     <table id="cart-items">
@@ -33,32 +37,41 @@
       </thead>
       <tbody>
         <!-- Cart items will be dynamically populated -->
-        @foreach ($data as $item)
-          <td>{{ $item -> name }}</td>
-          <td>{{ $item -> qty }}</td>
-          <td>{{ $item -> price }}</td>
-          <td class="price">{{ $item -> total }}</td>
-          <td>
-            <a href="{{ route('cart.remove', ['id' => $item -> id ]) }}">
-              &times;
-            </a>
-          </td>
-        @endforeach
+        @if (empty($data))
+          <tr class="empty"><td colspan="5">Nothing yet!</td></tr>
+        @else
+          @foreach ($data as $item)
+            <tr>
+              <td>{{ $item['name'] }}</td>
+              <td>{{ $item['qty'] }}</td>
+              <td>{{ $item['price'] }}</td>
+              <td class="price">{{ $item['total'] }}</td>
+              <td>
+                <a href="{{ route('cart.remove', ['id' => $item['id']]) }}">
+                  Remove Item
+                </a>
+              </td>
+            </tr>
+          @endforeach
+        @endif
       </tbody>
     </table>
+
     <div class="cart-total">
       <h3>Total Cost: <span id="total-cost"></span></h3>
     </div>
+
     <!-- Checkout Button -->
     <form action="" method="post">
-      <button id="checkout-btn">Proceed to Checkout</button>
+      @csrf
+      <button id="checkout-btn" type="submit">Proceed to Checkout</button>
     </form>
   </div>
 @endsection
 
 {{-- scripts --}}
 @section('scripts')
-  <script src="{{ asset('js/cart.js')}}"></script>
+  <script src="{{ asset('js/cart.js') }}"></script>
   <script>
     function calcTotal(selector) {
         let amounts = document.querySelectorAll(selector);
@@ -73,10 +86,7 @@
     }
 
     window.onload = function() {
-        document.getElementById('total-cost').textContent = calcTotal('table td .price'). '.00';
+        document.getElementById('total-cost').textContent = calcTotal('table .price') + '.00';
     };
-
-
   </script>
 @endsection
-

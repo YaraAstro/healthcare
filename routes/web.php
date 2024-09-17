@@ -65,7 +65,7 @@ Route::post('/payment/{id}', [HandlePayment::class, 'make_payment']) -> name('ma
 
 Route::get('/cart/{id}', [ManageCart::class, 'index']) -> name('cart');
 
-Route::get('/cart/add', [ManageCart::class, 'add_item_to_cart']) -> name('cart.add');
+Route::post('/cart/add', [ManageCart::class, 'add_item_to_cart']) -> name('cart.add');
 
 Route::get('/cart/remove/{id}', [ManageCart::class, 'remove_item_from_cart']) -> name('cart.remove');
 
