@@ -20,9 +20,15 @@ class ManagePrescription extends Controller
     }
 
     public function index ($id) {
-        $data = Prescription::find($id);
-        $medicine = Self::get_drugs(json_decode($data->drugs, true));
-        $user = Patient::find($data -> patient_id );
+        if ($id == 'XXX') {
+            $data = null;
+            $medicine = null;
+            $user = null;
+        } else {
+            $data = Prescription::find($id);
+            $medicine = Self::get_drugs(json_decode($data->drugs, true));
+            $user = Patient::find($data -> patient_id );
+        }
         return view('prescription', [
             'data' => $data,
             'med' => $medicine,

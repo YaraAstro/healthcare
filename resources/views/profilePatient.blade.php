@@ -41,7 +41,7 @@
                 <div class="data">{{ $green['status'] }}</div>
                 {{-- action --}}
                 <div class="data">
-                    <a href="">View</a>
+                    <a href="{{ route('prescription', ['id' => $green['presc']]) }}">View</a>
                 </div>
             </div>
         @endforeach
@@ -58,7 +58,7 @@
                 <div class="data">{{ $yellow['status'] }}</div>
                 {{-- action --}}
                 <div class="data">
-                    <a href="">View</a>
+                    <a href="{{ route('prescription', ['id' => $yellow['presc']]) }}">View</a>
                 </div>
             </div>
         @endforeach
@@ -75,7 +75,7 @@
                 <div class="data">{{ $red['status'] }}</div>
                 {{-- action --}}
                 <div class="data">
-                    <a href="">View</a>
+                    <a href="{{ route('prescription', ['id' => $red['presc']]) }}">View</a>
                 </div>
             </div>
         @endforeach
@@ -92,7 +92,7 @@
                     <div class="data">{{ $blue['status'] }}</div>
                     {{-- action --}}
                     <div class="data">
-                        <a href="">View</a>
+                        <a href="{{ route('prescription', ['id' => $blue['presc']]) }}">View</a>
                     </div>
                 </div>
             @endforeach

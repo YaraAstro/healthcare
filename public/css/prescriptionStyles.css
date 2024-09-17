@@ -143,3 +143,13 @@ footer {
     margin-top: 25px;
     bottom: 0;
 }
+
+.cont {
+    width: 100%;
+    height: 46vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gainsboro;
+    border-radius: 25px;
+}

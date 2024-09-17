@@ -8,6 +8,7 @@ use App\Http\Controllers\HandleDoctor;
 use App\Http\Controllers\HandlePatient;
 use App\Http\Controllers\ManageDrug;
 use App\Http\Controllers\ManagePrescription;
+use App\Http\Controllers\HandlePayment;
 
 Route::get('/', function () { 
     return view('index');
@@ -57,6 +58,10 @@ Route::get('/product', [ManageDrug::class, 'index']) -> name('show.meds');
 
 Route::get('/precscription/{id}', [ManagePrescription::class, 'index']) -> name('prescription');
 
+Route::get('/payment/{id}', [HandlePayment::class, 'index']) -> name('payment');
+
+Route::post('/payment/{id}', [HandlePayment::class, 'make_payment']) -> name('make.payment');
+
 // Route::get('/doctor/{username}', function () {
 //     return view('profileDoctor');
 // });
@@ -67,9 +72,6 @@ Route::get('/precscription/{id}', [ManagePrescription::class, 'index']) -> name(
 
 
 
-Route::get('/payment', function () {
-    return view('payment') -> name('payment');
-});
 
 
 Route::get('/product/cart', function () {

@@ -6,6 +6,7 @@ use App\Models\Patient;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\Prescription;
 
 class HandlePatient extends Controller
 {
@@ -13,16 +14,21 @@ class HandlePatient extends Controller
         $list = [];
         foreach ($appo_query as $this_appo) {
             $doctor = Doctor::find($this_appo->doctor_id)->name;
+            $presc = Prescription::where('appo_id', $this_appo->id)->first(); 
+            $presc_id = $presc ? $presc->id : 'XXX'; 
+            
             $data = [
                 'id' => $this_appo->id,
                 'doctor' => $doctor,
                 'date' => $this_appo->date,
-                'status' => $this_appo->status,  
+                'status' => $this_appo->status,
+                'presc' => $presc_id,  // Handle cases where no prescription exists
             ];
             $list[] = $data;
         }
         return $list;
     }
+    
     
     
     public function index() {
