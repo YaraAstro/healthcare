@@ -1,66 +1,159 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Project Setup Guide
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome to the Laravel Project Setup Guide! Follow these instructions to clone, set up, and run the project, including initializing a user in XAMPP and adding sample data.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 1. Initialize User for Backend of Our Laravel Project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Step 1: Open phpMyAdmin
+1. **Start Apache and MySQL** from your XAMPP Control Panel.
+2. Open your browser and navigate to [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+3. In phpMyAdmin, click on the **SQL** tab to execute SQL queries.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Step 2: Create a Database
+Run the following SQL query to create a new database:
+```sql
+CREATE DATABASE lnbtidb;
+```
 
-## Learning Laravel
+### Step 3: Create a New User
+Create a new user `lnbtiproject` with the password `lnbti2024` using:
+```sql
+CREATE USER 'lnbtiproject'@'localhost' IDENTIFIED BY 'lnbti2024';
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Step 4: Grant Access to the Database
+Grant all privileges to the `lnbtiproject` user for the `lnbtidb` database:
+```sql
+GRANT ALL PRIVILEGES ON lnbtidb.* TO 'lnbtiproject'@'localhost';
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Step 5: Refresh Privileges
+Apply the changes and refresh the privileges with:
+```sql
+FLUSH PRIVILEGES;
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Step 6: Verify the Changes
+Verify the user and database creation by checking the **Users** tab in phpMyAdmin.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 2. Clone & Run Laravel Project
 
-### Premium Partners
+### 1. Clone the Repository
+Open your terminal and run:
+```bash
+git clone https://github.com/YaraAstro/healthcare.git
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 2. Navigate to the Project Directory
+Change to the project directory:
+```bash
+cd healthcare
+```
 
-## Contributing
+### 3. Install Dependencies
+Install the necessary packages using Composer:
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Set Up Environment File
+Copy the example `.env` file to create your environment configuration:
+```bash
+cp .env.example .env
+```
 
-## Code of Conduct
+### 5. Generate Application Key
+Generate the application key by running:
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Set Up Database Configuration
+Edit the `.env` file with your database settings:
+```
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=lnbtidb
+DB_USERNAME=lnbtiproject
+DB_PASSWORD=lnbti2024
+```
+Ensure the database is created in MySQL.
 
-## Security Vulnerabilities
+### 7. Run Database Migrations
+Create the necessary tables with:
+```bash
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 8. Run Database Seeders (Optional)
+Populate the database with sample data if seeders are included:
+```bash
+php artisan db:seed
+```
 
-## License
+### 9. Install NPM Dependencies (Optional)
+If the project uses Laravel Mix, install NPM dependencies and compile assets:
+```bash
+npm install
+npm run dev
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 10. Serve the Application
+Start the Laravel development server:
+```bash
+php artisan serve
+```
+Access your application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+---
+
+## 3. Add Sample Data to XAMPP
+
+Use the following SQL commands to insert sample data into your tables.
+
+### Sample Data for `doctor` Table
+```sql
+INSERT INTO doctor (id, username, name, speciality, email, password) VALUES
+('DC001', 'drjohn', 'Dr. John Doe', 'Cardiology', 'john.doe@example.com', 'password123'),
+('DC002', 'drjane', 'Dr. Jane Smith', 'Neurology', 'jane.smith@example.com', 'password123'),
+('DC003', 'drrobert', 'Dr. Robert Brown', 'Pediatrics', 'robert.brown@example.com', 'password123'),
+('DC004', 'drlisa', 'Dr. Lisa White', 'Orthopedics', 'lisa.white@example.com', 'password123'),
+('DC005', 'drpeter', 'Dr. Peter Green', 'Dermatology', 'peter.green@example.com', 'password123');
+```
+
+### Sample Data for `patient` Table
+```sql
+INSERT INTO patient (id, username, name, mobile, address, city, state, zip_code, age, email, password) VALUES
+('PT001', 'alice', 'Alice Johnson', '123-456-7890', '123 Elm St', 'Springfield', 'IL', '62701', 30, 'alice.johnson@example.com', 'password123'),
+('PT002', 'bob', 'Bob Lee', '234-567-8901', '456 Oak St', 'Metropolis', 'NY', '10001', 45, 'bob.lee@example.com', 'password123'),
+('PT003', 'carol', 'Carol White', '345-678-9012', '789 Pine St', 'Gotham', 'NJ', '07001', 27, 'carol.white@example.com', 'password123'),
+('PT004', 'david', 'David Brown', '456-789-0123', '101 Maple St', 'Star City', 'CA', '90001', 50, 'david.brown@example.com', 'password123'),
+('PT005', 'emma', 'Emma Davis', '567-890-1234', '202 Cedar St', 'Central City', 'TX', '75001', 35, 'emma.davis@example.com', 'password123');
+```
+
+### Sample Data for `drug` Table
+```sql
+INSERT INTO drug (id, name, description, img_path, amount) VALUES
+('MD001', 'Aspirin', 'Pain reliever and anti-inflammatory medication.', 'https://medlineplus.gov/images/Medicines_share.jpg', '50.00'),
+('MD002', 'Ibuprofen', 'Nonsteroidal anti-inflammatory drug (NSAID) used to reduce fever, pain, and inflammation.', 'https://medlineplus.gov/images/Medicines_share.jpg', '60.00'),
+('MD003', 'Paracetamol', 'Used to treat fever and mild to moderate pain.', 'https://medlineplus.gov/images/Medicines_share.jpg', '40.00'),
+('MD004', 'Amoxicillin', 'Antibiotic used to treat bacterial infections.', 'https://medlineplus.gov/images/Medicines_share.jpg', '150.00'),
+('MD005', 'Metformin', 'Medication used to manage type 2 diabetes.', 'https://medlineplus.gov/images/Medicines_share.jpg', '120.00'),
+('MD006', 'Lisinopril', 'Used to treat high blood pressure and heart failure.', 'https://medlineplus.gov/images/Medicines_share.jpg', '200.00'),
+('MD007', 'Lipitor', 'Statin used to lower cholesterol levels.', 'https://medlineplus.gov/images/Medicines_share.jpg', '250.00'),
+('MD008', 'Cetirizine', 'Antihistamine used to relieve allergy symptoms.', 'https://medlineplus.gov/images/Medicines_share.jpg', '80.00'),
+('MD009', 'Simvastatin', 'Used to control high cholesterol.', 'https://medlineplus.gov/images/Medicines_share.jpg', '220.00'),
+('MD010', 'Prednisone', 'Corticosteroid used to treat inflammatory conditions.', 'https://medlineplus.gov/images/Medicines_share.jpg', '300.00'),
+('MD011', 'Hydrochlorothiazide', 'Diuretic used to treat high blood pressure and fluid retention.', 'https://medlineplus.gov/images/Medicines_share.jpg', '90.00'),
+('MD012', 'Albuterol', 'Bronchodilator used to treat asthma and chronic obstructive pulmonary disease (COPD).', 'https://medlineplus.gov/images/Medicines_share.jpg', '350.00');
+```
+
+Feel free to adjust the sample data to fit your project needs. Enjoy working with your Laravel application!
+
+This version uses clear headings and bullet points to make the instructions easy to follow and more organized.
+
