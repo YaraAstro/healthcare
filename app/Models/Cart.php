@@ -28,4 +28,12 @@ class Cart extends Model
         'price',
         'total'
     ];
+
+    public function drug() {
+        return $this->belongsTo(Drug::class, 'drug_id');
+    }
+    
+    public function patient() {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
 }

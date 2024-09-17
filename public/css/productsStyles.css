@@ -50,12 +50,35 @@ body {
   object-position: center;
 }
 
-.medCard .medBody {
+.medCard .medBody{
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 5px;
+}
+
+.medCard form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.medCard form input {
+  border: none;
+  outline: none;
+  padding: 3px 10px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  background-color: gainsboro;
+}
+
+.medCard form button {
+  outline: none;
+  border: none;
 }
 
 .medCard .medBody h5 {

@@ -23,6 +23,10 @@ return new class extends Migration
             $table->foreign('patient_id')->references('id')->on('patient');
             $table->foreign('drug_id')->references('id')->on('drug');
 
+            // Indexes
+            $table->index('patient_id');
+            $table->index('drug_id');
+
         });
     }
 

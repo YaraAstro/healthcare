@@ -21,7 +21,7 @@
             <a href="{{ route('appointment') }}">
                 <p>Make Appointment</p>
             </a>
-            <a href="{{ route('cart') }}">
+            <a href="{{ route('cart', ['id' => $user->id]) }}">
                 <p>My Cart</p>
             </a>
             <a href="{{ route('logout') }}">

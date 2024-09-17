@@ -22,7 +22,11 @@
                         <h5>{{ $med -> name }}</h5>
                         <p>{{ $med -> description }}</p>
                         <h2>{{ $med -> amount }}</h2>
-                        <a href="{{ route('cart') }}" class="addBtn">Add to Cart +</a>
+                        <form action="{{ route('cart.add') }}" method="get">
+                            <input type="hidden" name="drug_id" value="{{ $med -> id }}">
+                            <input type="number" name="drug_qty" id="drug_qty" value="{{ old('drug_qty', 1) }}">
+                            <button type="submit" class="addBtn">Add to Cart +</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
