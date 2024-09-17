@@ -15,7 +15,13 @@ class HandlePayment extends Controller
     public function index ($id) {
         
         $presc = Prescription::where('id', $id)->first();
-        $user = Patient::find($presc -> patient_id );
+
+        if (is_null($presc)) {
+            $user = Patient::find($id);
+            $presc = session('cart');   
+        } else {
+            $user = Patient::find($presc -> patient_id );
+        }
 
         return view('payment', ['user' => $user, 'data' => $presc]);
     }
@@ -26,7 +32,7 @@ class HandlePayment extends Controller
         $request->validate([
             'card_name' => 'required|string|max:255',
             'card_number' => 'required|string|regex:/^\d{4}-\d{4}-\d{4}-\d{4}$/', // Regex for format 1111-2222-3333-4444
-            'appo_id' => 'required|string',
+            'appo_id' => 'string',
             'patient_id' => 'required|string',
             'amount' => 'required|numeric', // Ensure it's a numeric value
         ]);
@@ -47,9 +53,11 @@ class HandlePayment extends Controller
     
         // Create new payment record
         Payment::create($data);
-    
-        // Update Prescription status
-        Prescription::where('appo_id', $id)->update(['status' => 'paid', 'payment_id' => $new_id]);
+
+        if (!is_null($request->input('appo_id'))){
+            // Update Prescription status
+            Prescription::where('appo_id', $id)->update(['status' => 'paid', 'payment_id' => $new_id]);
+        }
     
         // Optionally, return a response or redirect
         return redirect()->route('profile.patient', ['username' => session('username')]);

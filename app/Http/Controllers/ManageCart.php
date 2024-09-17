@@ -5,9 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Drug;
+use App\Models\Patient;
 
 class ManageCart extends Controller
 {
+
+    private function clear_cart($id) {
+        // DELETE FROM cart WHERE patient_id = $id 
+        Cart::where('patient_id', $id)->delete();
+    }
+
+    private function format_data($total) {
+        $data = new \stdClass();
+        $data->id = 'PRAPC';
+        $data->amount = $total;
+        $data->appo_id = 'APXXX';
+        
+        return $data;
+    }
+
     private function cart_table_data($user_id) {
         $data = Cart::with('drug')->where('patient_id', $user_id)->get();
         $items = [];
@@ -25,8 +41,12 @@ class ManageCart extends Controller
     
         return $items;
     }
-    
 
+    private function cart_meds($list) {
+        // Optimized to fetch all drugs in a single query
+        return Drug::whereIn('id', $list)->get();
+    }
+    
     public function index ($id) {
         if (!is_null($id)) {
 
@@ -84,7 +104,6 @@ class ManageCart extends Controller
                          ->with('success', 'Cart updated successfully!');
     }
     
-
     public function remove_item_from_cart($drug_id) {
         // DELETE FROM cart WHERE patient_id = session('id') AND drug_id = $id
         Cart::where('patient_id', session('id'))
@@ -95,15 +114,19 @@ class ManageCart extends Controller
         return redirect()->route('cart', ['id' => session('id')]);
     }
     
+    public function buy_from_cart (Request $request,$id) {
+        $request -> validate([
+            'total' => 'required|string',
+        ]);
+        $user = Patient::find($id);
+        $data = Self::format_data($request -> input('total'));
 
-    public function clear_cart($id) {
-        // DELETE FROM cart WHERE patient_id = $id 
-        Cart::where('patient_id', $id)->delete();
-    
-        // Redirect back to the cart or a different page
-        return redirect()->route('cart', ['id' => $id]);
+        session(['cart' => $data]);
+
+        Self::clear_cart($id);
+        
+        return redirect()->route('payment', ['id' => $id]);
+
     }
 
-    public function buy_from_cart () {}
-    
 }

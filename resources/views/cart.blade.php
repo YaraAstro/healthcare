@@ -62,8 +62,9 @@
     </div>
 
     <!-- Checkout Button -->
-    <form action="" method="post">
+    <form action="{{ route('cart.clear', ['id' => session('id')]) }}" method="post">
       @csrf
+      <input type="hidden" name="total" id="total">
       <button id="checkout-btn" type="submit">Proceed to Checkout</button>
     </form>
   </div>
@@ -87,6 +88,7 @@
 
     window.onload = function() {
         document.getElementById('total-cost').textContent = calcTotal('table .price') + '.00';
+        document.getElementById('total').value = calcTotal('table .price');
     };
   </script>
 @endsection

@@ -32,23 +32,41 @@
         <div class="subframe">
             <p class="topic">Appointments</p>
 
-            @foreach ($appo as $appointment)
-                <div class="row">
-                    {{-- date --}}
-                    <div class="data">{{ $appointment['date'] }}</div> 
-                    {{-- patient --}}
-                    <div class="data">{{ $appointment['patient'] }}</div>
-                    {{-- status --}}
-                    <div class="data">{{ $appointment['status'] }}</div>
-                    {{-- action --}}
-                    <div class="data">
-                        <a href="{{ route('appointment.examine', ['id' => $appointment['id']]) }}">View</a>
+            @foreach ($appo as $appointment) 
+                @if ($appointment['status'] === 'approve')
+                    <div class="row">
+                        {{-- date --}}
+                        <div class="data">{{ $appointment['date'] }}</div> 
+                        {{-- patient --}}
+                        <div class="data">{{ $appointment['patient'] }}</div>
+                        {{-- status --}}
+                        <div class="data">{{ $appointment['status'] }}</div>
+                        {{-- action --}}
+                        <div class="data">
+                            <a href="{{ route('appointment.examine', ['id' => $appointment['id']]) }}">View</a>
+                        </div>
                     </div>
-                </div>
+                @endif
             @endforeach
         </div>
         <div class="subframe">
             <p class="topic">History</p>
+            @foreach ($appo as $appointment) 
+                @if ($appointment['status'] === 'done')
+                    <div class="row">
+                        {{-- date --}}
+                        <div class="data">{{ $appointment['date'] }}</div> 
+                        {{-- patient --}}
+                        <div class="data">{{ $appointment['patient'] }}</div>
+                        {{-- status --}}
+                        <div class="data">{{ $appointment['status'] }}</div>
+                        {{-- action --}}
+                        <div class="data">
+                            <a href="{{ route('appointment.examine', ['id' => $appointment['id']]) }}">View</a>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
     </div>
 @endsection

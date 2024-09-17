@@ -69,7 +69,7 @@ Route::post('/cart/add', [ManageCart::class, 'add_item_to_cart']) -> name('cart.
 
 Route::get('/cart/remove/{id}', [ManageCart::class, 'remove_item_from_cart']) -> name('cart.remove');
 
-Route::get('/cart/clear/{id}', [ManageCart::class, 'clear_cart']) -> name('cart.clear');
+Route::post('/cart/clear/{id}', [ManageCart::class, 'buy_from_cart']) -> name('cart.clear');
 
 
 
