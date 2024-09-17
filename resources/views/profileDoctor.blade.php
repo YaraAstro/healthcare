@@ -10,7 +10,15 @@
 
 {{-- content --}}
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if ($errors -> any())
+        <div class="alert alert-danger">{{ $errors }}</div>
+    @endif
     <div class="frame">
+
         <div class="subframe">
             <div class="box">
                 <h1>{{ $user -> name }}</h1>

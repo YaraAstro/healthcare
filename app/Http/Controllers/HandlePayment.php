@@ -60,7 +60,7 @@ class HandlePayment extends Controller
         }
     
         // Optionally, return a response or redirect
-        return redirect()->route('profile.patient', ['username' => session('username')]);
+        return redirect()->route('profile.patient', ['username' => session('username')])->with('success', 'Payment Succeed !');
     }
     
 }
